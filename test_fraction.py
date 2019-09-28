@@ -4,19 +4,28 @@ import fraction
 class TestFraction(unittest.TestCase):
 
     def setUp(self):
+        """
+        defining some fractions to play with
+        """
         self.half = fraction.Fraction(1,2)
         self.third = fraction.Fraction(1,3)
         self.quarter = fraction.Fraction(1,4)
         self.result = None
     
     def tearDown(self):
+        """
+        cleaning up example fractions
+        """
         del(self.half)
         del(self.third)
         del(self.quarter)
         del(self.result)
         
     def test_define(self):
-        self.assertEqual(self.half, fraction.Fraction(1,2)) #shouldn't be possible to fail, but I'm nothing if not thurough
+        """
+        tests the initialization process and its ability to filter out strings and floats
+        """
+        self.assertEqual(self.half, fraction.Fraction(1,2))
         with self.assertRaises(ValueError):
             fraction.Fraction("ham",2)
         with self.assertRaises(ValueError):
@@ -38,20 +47,32 @@ class TestFraction(unittest.TestCase):
         self.assertEqual(self.quarter - self.half, fraction.Fraction(-1,4))
         
     def test_mul(self):
+        """
+        Checking ability to multiply and simplify
+        """
         self.assertEqual(self.half * self.half, self.quarter)
         self.assertEqual(self.third, self.third * fraction.Fraction(5,5))
         
     def test_truediv(self):
+        """
+        testing ability to divide and toss div by 0
+        """
         self.assertEqual(self.half, self.quarter / self.half)
         with self.assertRaises(ZeroDivisionError):
             self.result = self.quarter / fraction.Fraction(0,5)
             
     def test_getter(self):
+        """
+        testing @property getters self.num and self.den
+        """
         self.assertEqual(self.half.num, 1)
         self.assertEqual(self.half.den, 2)
         
         
     def test_setter(self):
+        """
+        testing @property setters self.num and self.den
+        """
         self.result = self.half
         self.result.num = 2
         self.result.den = 3
