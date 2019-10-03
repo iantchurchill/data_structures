@@ -140,6 +140,11 @@ class Fraction:
 
         return firstnum == secondnum
 
+    def __ne__(self, otherfraction):
+
+        return (not self == otherfraction)
+            
+    
     def __lt__(self, otherfraction):
         """
         The fractional less than method.
@@ -197,8 +202,13 @@ class Fraction:
     @den.setter #deniminator setter
     def den(self, val):
 #        try:
-        if isinstance(val,int):  #checking if is int
-            self._den = val
+        if isinstance(val,int) and val != 0:  #checking if is int
+            if val < 0:
+            
+                self._den = abs(val)
+                self._num = -self._num
+            else:
+                self._den = val
         else:
             raise ValueError()
         
