@@ -86,6 +86,19 @@ class TestFraction(unittest.TestCase):
         with self.assertRaises(ValueError):
             fraction.Fraction(3,4.5)
 
-    
+    def test_gt(self):
+        self.assertTrue(self.half > self.third)
+        
+    def test_lt(self):
+        self.assertTrue(self.third < self.half)
+
+    def test_ge(self):
+        self.assertTrue(self.half > self.third)
+        self.assertTrue(self.half == self.half)
+
+    def test_le(self):
+        self.assertTrue(self.third < self.half)
+        self.assertTrue(self.half == self.half)
+        
 if __name__ == '__main__':
     unittest.main()

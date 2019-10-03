@@ -151,8 +151,8 @@ class Fraction:
           bool: a boolean asserting first fraction is less than second.
         """
 
-        firstnum = self._num * other._den
-        secondnum = other._num * self._den
+        firstnum = self._num * otherfraction._den
+        secondnum = otherfraction._num * self._den
 
         return firstnum < secondnum
 
@@ -166,10 +166,17 @@ class Fraction:
         Returns:
           bool: a boolean asserting first fraction is greater than second.
         """
-        firstnum = self._num * other._den
-        secondnum = other._num * self._den
+#        firstnum = self._num * other._den
+#        secondnum = other._num * self._den
 
-        return firstnum > secondnum
+        return not self < other
+
+    def __le__(self, other):
+        return (self < other or self == other)
+
+    def __ge__(self, other):
+
+        return (self > other or self == other)
     
     @property #numerator getter
     def num(self):
