@@ -21,9 +21,9 @@ class Fraction:
 
     def __init__(self, top, bottom):
 #        try:
-        if "." not in str(top) and "." not in str(bottom): #checking for floats
-            self._num = int(top)
-            self._den = int(bottom)
+        if isinstance(top,int) and isinstance(bottom, int): #checking inputs
+            self._num = top
+            self._den = bottom
         else:
             raise ValueError("enter numerator, denominator as integer")
 #        except ValueError:
@@ -184,8 +184,8 @@ class Fraction:
     @num.setter #numerator setter
     def num(self, val):
 #        try:
-        if "." not in str(val):  #checking for floats
-            self._num = int(val) #assigning, should throw ValueError if not numeric
+        if isinstance(val, int):  #checking if is int
+            self._num = val
         else:
             raise ValueError()
         
@@ -197,8 +197,8 @@ class Fraction:
     @den.setter #deniminator setter
     def den(self, val):
 #        try:
-        if "." not in str(val):  #checking for floats
-            self._den = int(val) #assigning, should throw ValueError if not numeric
+        if isinstance(val,int):  #checking if is int
+            self._den = val
         else:
             raise ValueError()
         
