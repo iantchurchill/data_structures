@@ -174,7 +174,7 @@ class Fraction:
 #        firstnum = self._num * other._den
 #        secondnum = other._num * self._den
 
-        return not self < other
+        return (not self < other) and (not self == other)
 
     def __le__(self, other):
         return (self < other or self == other)
