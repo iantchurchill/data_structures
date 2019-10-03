@@ -1,4 +1,12 @@
 def gcd(m, n):
+    """A method to determine the greatest common denominator of m and n
+
+    Parameters:
+        m (int): an integer
+        n (int): another integer
+    Returns:
+        n (int): the gcd of parameters m and n
+    """
     while m % n != 0:
         oldm = m
         oldn = n
@@ -20,14 +28,11 @@ class Fraction:
     """
 
     def __init__(self, top, bottom):
-#        try:
         if isinstance(top,int) and isinstance(bottom, int): #checking inputs
             self._num = top
             self._den = bottom
         else:
             raise ValueError("enter numerator, denominator as integer")
-#        except ValueError:
-#           print("Error: enter numerator, denominator as integer arguments")
         """
         The constructor for Fraction class.
 
@@ -171,15 +176,13 @@ class Fraction:
         Returns:
           bool: a boolean asserting first fraction is greater than second.
         """
-#        firstnum = self._num * other._den
-#        secondnum = other._num * self._den
 
         return (not self < other) and (not self == other)
 
-    def __le__(self, other):
+    def __le__(self, other): #fractional <= operator
         return (self < other or self == other)
 
-    def __ge__(self, other):
+    def __ge__(self, other): #fractional >= operator
 
         return (self > other or self == other)
     
@@ -188,29 +191,22 @@ class Fraction:
         return self._num
     @num.setter #numerator setter
     def num(self, val):
-#        try:
         if isinstance(val, int):  #checking if is int
             self._num = val
         else:
             raise ValueError()
-        
-#        except ValueError:
-#            print("Error: enter numerator, denominator as integer arguments")
+
     @property #denominator getter
     def den(self):
         return self._den
     @den.setter #deniminator setter
     def den(self, val):
-#        try:
         if isinstance(val,int) and val != 0:  #checking if is int
             if val < 0:
             
-                self._den = abs(val)
+                self._den = abs(val)  #correcting to negative num over positive den
                 self._num = -self._num
             else:
                 self._den = val
         else:
-            raise ValueError()
-        
-#        except ValueError:
-#            print("Error: enter numerator, denominator as integer arguments")
+            raise ValueError("enter numerator, denominator as integer arguments")
